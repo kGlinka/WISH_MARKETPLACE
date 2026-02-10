@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "227655585956",
+    "project_id": "wishmarketpalce",
+    "storage_bucket": "wishmarketpalce.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227655585956:android:a36eb927fcb871abd99631",
+        "android_client_info": {
+          "package_name": "com.wishmarketplace.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSxSPhMyenMa_3bD-nIg31NQv6wPSmo7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

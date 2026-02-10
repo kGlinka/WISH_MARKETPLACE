@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(flutter pub run build_runner build:*)",
+      "Bash(cat:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(flutter pub get:*)",
+      "Bash(./gradlew:*)",
+      "Bash(gradlew.bat:*)",
+      "Bash(\"C:\\\\Users\\\\puszk\\\\Desktop\\\\mat6\\\\30_Stycznia\\\\wish_marketplace\\\\android\\\\gradlew.bat\" -p \"C:\\\\Users\\\\puszk\\\\Desktop\\\\mat6\\\\30_Stycznia\\\\wish_marketplace\\\\android\" :wearos:installDebug)",
+      "Bash(adb:*)",
+      "Bash(git -c safe.directory=* log --oneline -20)",
+      "Bash(flutter build:*)"
+    ]
+  }
+}

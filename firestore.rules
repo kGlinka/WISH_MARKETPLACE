@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId);
+      allow delete: if isOwner(userId);
+
+      // User notifications subcollection
+      match /notifications/{notificationId} {
+        allow read: if isOwner(userId);
+        allow write: if false; // Only Cloud Functions can write
+      }
+    }
+
+    // Wishes collection
+    match /wishes/{wishId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() &&
+        (isOwner(resource.data.userId) ||
+         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['viewCount', 'bidCount']));
+      allow delete: if isOwner(resource.data.userId);
+
+      // Bids subcollection
+      match /bids/{bidId} {
+        allow read: if isAuthenticated();
+        allow create: if isAuthenticated();
+        allow update: if isAuthenticated() &&
+          (isOwner(resource.data.providerId) ||
+           isOwner(get(/databases/$(database)/documents/wishes/$(wishId)).data.userId));
+        allow delete: if isOwner(resource.data.providerId);
+      }
+    }
+
+    // Transactions collection
+    match /transactions/{transactionId} {
+      allow read: if isAuthenticated() &&
+        (isOwner(resource.data.userId) || isOwner(resource.data.providerId));
+      allow create: if isAuthenticated();
+      allow update: if false; // Only Cloud Functions can update
+      allow delete: if false;
+    }
+
+    // Conversations collection
+    match /conversations/{conversationId} {
+      allow read: if isAuthenticated() &&
+        request.auth.uid in resource.data.participants;
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() &&
+        request.auth.uid in resource.data.participants;
+
+      // Messages subcollection
+      match /messages/{messageId} {
+        allow read: if isAuthenticated() &&
+          request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
+        allow create: if isAuthenticated() &&
+          request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
+        allow update: if isAuthenticated() &&
+          request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
+      }
+    }
+
+    // Reviews collection
+    match /reviews/{reviewId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && isOwner(request.resource.data.reviewerId);
+      allow update, delete: if false; // Reviews are immutable
+    }
+  }
+}

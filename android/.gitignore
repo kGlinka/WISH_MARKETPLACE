@@ -1,0 +1,53 @@
+# Android / Gradle
+gradle-wrapper.jar
+/.gradle
+/captures/
+/gradlew
+/gradlew.bat
+/local.properties
+GeneratedPluginRegistrant.java
+
+# Flutter / Dart
+.dart_tool/
+build/
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+**/pubspec.lock  # jeśli masz subprojekty
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Firebase local
+firebase-debug.log
+
+# Key / security files
+key.properties
+**/*.keystore
+**/*.jks
+
+# Windows system files
+nul
+
+# Claude / temp files
+.claude/
+tmpclaude-*/
+
+# Optional: temp files / OS files
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Podfile.lock
+
+# Flutter desktop
+linux/flutter/generated_plugin_registrant.cc
+macos/Flutter/GeneratedPluginRegistrant.swift
+windows/flutter/generated_plugin_registrant.cpp

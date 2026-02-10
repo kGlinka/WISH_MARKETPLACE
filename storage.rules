@@ -1,0 +1,46 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isAudio() {
+      return request.resource.contentType.matches('audio/.*');
+    }
+
+    function isUnder(size) {
+      return request.resource.size < size;
+    }
+
+    // User profile images
+    match /users/{userId}/profile/{imageName} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) && isImage() && isUnder(5 * 1024 * 1024); // 5MB
+    }
+
+    // Message attachments
+    match /messages/{conversationId}/{messageId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+        (isImage() || isAudio()) &&
+        isUnder(10 * 1024 * 1024); // 10MB
+    }
+
+    // Wish images (optional feature)
+    match /wishes/{wishId}/{imageName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isImage() && isUnder(5 * 1024 * 1024);
+    }
+  }
+}
