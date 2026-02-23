@@ -10,7 +10,7 @@ import '../widgets/wish_statistics_card.dart';
 
 /// Page for displaying and managing user's wishes
 class WishListPage extends ConsumerStatefulWidget {
-  const WishListPage({Key? key}) : super(key: key);
+  const WishListPage({super.key});
 
   @override
   ConsumerState<WishListPage> createState() => _WishListPageState();

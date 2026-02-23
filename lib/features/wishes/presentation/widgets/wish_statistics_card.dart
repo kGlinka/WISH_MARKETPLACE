@@ -7,9 +7,9 @@ class WishStatisticsCard extends StatelessWidget {
   final WishStatistics statistics;
 
   const WishStatisticsCard({
-    Key? key,
+    super.key,
     required this.statistics,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

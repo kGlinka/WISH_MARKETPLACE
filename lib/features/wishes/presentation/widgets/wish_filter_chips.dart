@@ -6,7 +6,7 @@ import '../providers/wish_providers.dart';
 
 /// Filter chips for filtering wishes
 class WishFilterChips extends ConsumerWidget {
-  const WishFilterChips({Key? key}) : super(key: key);
+  const WishFilterChips({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -105,7 +105,7 @@ class WishFilterChips extends ConsumerWidget {
                     ),
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),

@@ -11,9 +11,9 @@ class WishFormPage extends ConsumerStatefulWidget {
   final String? wishId;
 
   const WishFormPage({
-    Key? key,
+    super.key,
     this.wishId,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<WishFormPage> createState() => _WishFormPageState();
@@ -178,7 +178,7 @@ class _WishFormPageState extends ConsumerState<WishFormPage> {
 
             // Category
             DropdownButtonFormField<WishCategory>(
-              value: _selectedCategory,
+              initialValue: _selectedCategory,
               decoration: const InputDecoration(
                 labelText: 'Category *',
                 border: OutlineInputBorder(),
@@ -199,7 +199,7 @@ class _WishFormPageState extends ConsumerState<WishFormPage> {
 
             // Priority
             DropdownButtonFormField<WishPriority>(
-              value: _selectedPriority,
+              initialValue: _selectedPriority,
               decoration: const InputDecoration(
                 labelText: 'Priority *',
                 border: OutlineInputBorder(),
@@ -220,7 +220,7 @@ class _WishFormPageState extends ConsumerState<WishFormPage> {
 
             // Status
             DropdownButtonFormField<WishStatus>(
-              value: _selectedStatus,
+              initialValue: _selectedStatus,
               decoration: const InputDecoration(
                 labelText: 'Status *',
                 border: OutlineInputBorder(),

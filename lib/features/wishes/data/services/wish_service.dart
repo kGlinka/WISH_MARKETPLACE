@@ -73,7 +73,7 @@ class WishService {
       final data = doc.data()!;
       data['id'] = doc.id;
 
-      return WishModel.fromJson(data);
+      return WishModel.fromJson(_convertTimestamps(data));
     } catch (e, stackTrace) {
       AppLogger.error('Failed to fetch wish', e, stackTrace);
       throw FirestoreException(message: 'Failed to fetch wish: ${e.toString()}');
@@ -93,7 +93,7 @@ class WishService {
         return snapshot.docs.map((doc) {
           final data = doc.data();
           data['id'] = doc.id;
-          return WishModel.fromJson(data);
+          return WishModel.fromJson(_convertTimestamps(data));
         }).toList();
       });
     } catch (e, stackTrace) {
@@ -119,7 +119,7 @@ class WishService {
         return snapshot.docs.map((doc) {
           final data = doc.data();
           data['id'] = doc.id;
-          return WishModel.fromJson(data);
+          return WishModel.fromJson(_convertTimestamps(data));
         }).toList();
       });
     } catch (e, stackTrace) {
@@ -145,7 +145,7 @@ class WishService {
         return snapshot.docs.map((doc) {
           final data = doc.data();
           data['id'] = doc.id;
-          return WishModel.fromJson(data);
+          return WishModel.fromJson(_convertTimestamps(data));
         }).toList();
       });
     } catch (e, stackTrace) {
@@ -171,7 +171,7 @@ class WishService {
         return snapshot.docs.map((doc) {
           final data = doc.data();
           data['id'] = doc.id;
-          return WishModel.fromJson(data);
+          return WishModel.fromJson(_convertTimestamps(data));
         }).toList();
       });
     } catch (e, stackTrace) {
@@ -194,7 +194,7 @@ class WishService {
         return snapshot.docs.map((doc) {
           final data = doc.data();
           data['id'] = doc.id;
-          return WishModel.fromJson(data);
+          return WishModel.fromJson(_convertTimestamps(data));
         }).toList();
       });
     } catch (e, stackTrace) {
@@ -218,7 +218,7 @@ class WishService {
           .map((doc) {
             final data = doc.data();
             data['id'] = doc.id;
-            return WishModel.fromJson(data);
+            return WishModel.fromJson(_convertTimestamps(data));
           })
           .where((wish) =>
               wish.title.toLowerCase().contains(lowerQuery) ||
@@ -286,6 +286,17 @@ class WishService {
     }
   }
 
+  /// Convert Firestore Timestamps to ISO 8601 strings for JSON deserialization
+  Map<String, dynamic> _convertTimestamps(Map<String, dynamic> data) {
+    final result = Map<String, dynamic>.from(data);
+    for (final key in ['createdAt', 'updatedAt', 'completedAt']) {
+      if (result[key] is Timestamp) {
+        result[key] = (result[key] as Timestamp).toDate().toIso8601String();
+      }
+    }
+    return result;
+  }
+
   /// Get wish statistics for a user
   Future<WishStatistics> getWishStatistics(String userId) async {
     try {
@@ -298,7 +309,7 @@ class WishService {
       final wishes = snapshot.docs.map((doc) {
         final data = doc.data();
         data['id'] = doc.id;
-        return WishModel.fromJson(data);
+        return WishModel.fromJson(_convertTimestamps(data));
       }).toList();
 
       final total = wishes.length;

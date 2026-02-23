@@ -10,12 +10,12 @@ class WishCard extends StatelessWidget {
   final VoidCallback? onDelete;
 
   const WishCard({
-    Key? key,
+    super.key,
     required this.wish,
     this.onTap,
     this.onFavoriteToggle,
     this.onDelete,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

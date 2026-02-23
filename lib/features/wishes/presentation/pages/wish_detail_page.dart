@@ -11,9 +11,9 @@ class WishDetailPage extends ConsumerStatefulWidget {
   final String wishId;
 
   const WishDetailPage({
-    Key? key,
+    super.key,
     required this.wishId,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<WishDetailPage> createState() => _WishDetailPageState();
@@ -606,15 +606,19 @@ class _WishDetailPageState extends ConsumerState<WishDetailPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              Navigator.pop(context);
+              final navigator = Navigator.of(context);
+              final scaffoldMessenger = ScaffoldMessenger.of(context);
+              final router = GoRouter.of(context);
+
+              navigator.pop();
               await ref
                   .read(wishFormProvider.notifier)
                   .deleteWish(_wish!.id);
               if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
+                scaffoldMessenger.showSnackBar(
                   const SnackBar(content: Text('Wish deleted')),
                 );
-                context.pop();
+                router.pop();
               }
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),

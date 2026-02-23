@@ -175,8 +175,7 @@ class AuthService {
       }
 
       AppLogger.info('Updating email for user: ${user.uid}');
-      await user.updateEmail(newEmail);
-      await user.sendEmailVerification();
+      await user.verifyBeforeUpdateEmail(newEmail);
       AppLogger.info('Email updated successfully');
     } on FirebaseAuthException catch (e, stackTrace) {
       AppLogger.error('Email update failed', e, stackTrace);
