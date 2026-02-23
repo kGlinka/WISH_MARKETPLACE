@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "424124516692",
+    "project_id": "wish-marketplace-wear-os",
+    "storage_bucket": "wish-marketplace-wear-os.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424124516692:android:56eefefcd257225e45a0c1",
+        "android_client_info": {
+          "package_name": "com.wishmarketplace.wish_marketplace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg0VsoeV3QAcnShaF_nrXgki-2KwAi2-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

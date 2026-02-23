@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(flutter pub run build_runner build:*)",
+      "Bash(cat:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(flutter pub get:*)",
+      "Bash(./gradlew:*)",
+      "Bash(gradlew.bat:*)",
+      "Bash(\"C:\\\\Users\\\\puszk\\\\Desktop\\\\mat6\\\\30_Stycznia\\\\wish_marketplace\\\\android\\\\gradlew.bat\" -p \"C:\\\\Users\\\\puszk\\\\Desktop\\\\mat6\\\\30_Stycznia\\\\wish_marketplace\\\\android\" :wearos:installDebug)",
+      "Bash(adb:*)",
+      "Bash(git:*)",
+      "Bash(flutter build:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(tee:*)",
+      "Bash(where java:*)",
+      "Bash(D:\\\\java\\\\bin\\\\java.exe:*)",
+      "Bash(flutter --version:*)",
+      "Bash(flutter clean:*)",
+      "Bash(del:*)",
+      "Bash(if:*)",
+      "Bash(then rm -rf android/.gradle)",
+      "Bash(else echo \"No .gradle directory found\")",
+      "Bash(fi:*)"
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wish Marketplace</string>
+    <string name="tile_label">Quick Wishes</string>
+    <string name="complication_label">Active Bids</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_wishes">My Wishes</string>
+    <string name="nav_marketplace">Marketplace</string>
+    <string name="nav_bids">My Bids</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Actions -->
+    <string name="action_place_bid">Place Bid</string>
+    <string name="action_buy_now">Buy Now</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="action_login">Login</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_confirm">Confirm</string>
+
+    <!-- Status -->
+    <string name="status_loading">Loading…</string>
+    <string name="status_error">Error occurred</string>
+    <string name="status_success">Success!</string>
+    <string name="status_no_data">No data available</string>
+
+    <!-- Wish Status -->
+    <string name="wish_status_active">Active</string>
+    <string name="wish_status_in_progress">In Progress</string>
+    <string name="wish_status_completed">Completed</string>
+    <string name="wish_status_deferred">Deferred</string>
+    <string name="wish_status_cancelled">Cancelled</string>
+
+    <!-- Bid Status -->
+    <string name="bid_status_active">Active</string>
+    <string name="bid_status_winning">Winning</string>
+    <string name="bid_status_won">Won</string>
+    <string name="bid_status_outbid">Outbid</string>
+    <string name="bid_status_lost">Lost</string>
+
+    <!-- Priority -->
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="priority_urgent">Urgent</string>
+
+    <!-- Empty States -->
+    <string name="empty_wishes">No active wishes</string>
+    <string name="empty_listings">No active listings</string>
+    <string name="empty_bids">No active bids</string>
+    <string name="empty_notifications">No new notifications</string>
+
+    <!-- Messages -->
+    <string name="msg_bid_placed">Bid placed successfully!</string>
+    <string name="msg_wish_updated">Wish updated!</string>
+    <string name="msg_sign_out_confirm">Are you sure you want to sign out?</string>
+    <string name="msg_ending_soon">Ending Soon!</string>
+
+    <!-- Labels -->
+    <string name="label_current_bid">Current Bid</string>
+    <string name="label_starting_bid">Starting Bid</string>
+    <string name="label_bid_increment">Bid Increment</string>
+    <string name="label_time_left">Time Left</string>
+    <string name="label_bids">Bids</string>
+    <string name="label_progress">Progress</string>
+    <string name="label_description">Description</string>
+    <string name="label_category">Category</string>
+    <string name="label_status">Status</string>
+    <string name="label_priority">Priority</string>
+</resources>
